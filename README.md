@@ -14,10 +14,9 @@ This project explores chunk-based data processing and related experiments.
     ```bash
     uv pip install
     ```
-4. To run the uvicorn server with uv:
-    ```bash
-    uv run uvicorn server:app --reload
-    ``` 
+4. To run the uvicorn server with uv, run run.sh (may have to `chmod +x run.sh` to make runnable)
+visit localhost:8888/test.html
+try uploading file, should appear in the uploads folder
 
 ## License
 
