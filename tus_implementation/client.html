@@ -1,0 +1,20 @@
+<script src="https://cdn.jsdelivr.net/npm/tus-js-client@latest/dist/tus.min.js"></script>
+<input type="file" id="fileInput" />
+<script>
+const input = document.getElementById("fileInput");
+input.addEventListener("change", function() {
+  const file = input.files[0];
+  const upload = new tus.Upload(file, {
+    endpoint: "http://localhost:1080/files/", // tusd server
+    metadata: { filename: file.name },
+    onError: (err) => console.error("Upload failed:", err),
+    onProgress: (bytesUploaded, bytesTotal) => {
+      console.log(`Progress: ${((bytesUploaded/bytesTotal)*100).toFixed(2)}%`);
+    },
+    onSuccess: () => {
+      console.log("Upload finished:", upload.url);
+    }
+  });
+  upload.start();
+});
+</script>
